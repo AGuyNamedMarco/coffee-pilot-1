@@ -1,343 +1,382 @@
-import type { CSSProperties } from 'react';
-
 const drinks = [
   {
     name: 'Brown Sugar Latte',
-    description: 'Sweet espresso, brown sugar, and silky milk.'
+    description: 'Espresso, brown sugar, and silky milk — familiar, sweet, and easy to come back to.'
   },
   {
     name: 'Iced Matcha',
-    description: 'Smooth green tea with a calm, creamy finish.'
+    description: 'A cool, creamy pause for warm Eastlake mornings.'
   },
   {
     name: 'Cold Brew',
-    description: 'Slow-steeped, bold, and built for warm Eastlake mornings.'
-  },
-  {
-    name: 'Seasonal Special',
-    description: 'A rotating drink that gives regulars something new to try.'
+    description: 'Slow-steeped, bold, and ready for the routine.'
   }
 ];
 
-const moments = [
-  'Real customer moments',
-  'Outdoor coffee truck atmosphere',
-  'Neighborhood updates and pop-ups'
+const proof = [
+  'Neighbors stopping by before the day starts',
+  'Outdoor coffee truck moments in Eastlake',
+  'Rewards, gift cards, and reasons to return'
 ];
 
 export default function App() {
   return (
-    <main style={page}>
-      <section style={hero}>
-        <div style={heroOverlay} />
-        <div style={heroContent}>
-          <p style={heroEyebrow}>Alcove Community Coffee · Eastlake · Chula Vista</p>
-          <h1 style={heroTitle}>Coffee worth making part of your routine.</h1>
-          <p style={heroText}>Outdoor coffee, familiar faces, and small rituals that become community.</p>
-          <div style={buttonRow}>
-            <a style={primaryButton} href="#visit">Plan Your Visit</a>
-            <a style={secondaryButtonOnDark} href="https://alcove-community-coffee.square.site/">Order Ahead</a>
+    <main className="site-shell">
+      <style>{styles}</style>
+
+      <section className="hero">
+        <div className="hero__media" aria-label="Authentic Alcove coffee truck and community photo needed" />
+        <div className="hero__overlay" />
+        <div className="hero__content">
+          <p className="eyebrow eyebrow--light">Alcove Community Coffee · Eastlake</p>
+          <h1>Coffee, neighbors, and a reason to slow down.</h1>
+          <p className="hero__lede">An outdoor coffee stop in Chula Vista built around familiar faces, small rituals, and community connection.</p>
+          <div className="button-row">
+            <a className="button button--primary" href="#visit">Plan Your Visit</a>
+            <a className="button button--ghost" href="https://alcove-community-coffee.square.site/">Order Ahead</a>
           </div>
         </div>
       </section>
 
-      <section style={splitSection}>
-        <div style={imagePanel}>Truck photo / founder image</div>
-        <div>
-          <p style={eyebrow}>Why Alcove exists</p>
-          <h2 style={sectionHeading}>Built around coffee, connection, and community.</h2>
-          <p style={bodyLarge}>
-            Alcove has an opportunity to tell a stronger story: people come back for familiar faces as much as coffee. This concept gives the brand a warmer, more local, and more memorable presence.
-          </p>
+      <section className="section split">
+        <div className="photo-card photo-card--story">
+          <span>Founder / truck photo</span>
+        </div>
+        <div className="section-copy">
+          <p className="eyebrow">Why Alcove exists</p>
+          <h2>Built for the kind of coffee stop people remember.</h2>
+          <p>Alcove’s opportunity is bigger than menu access. The stronger story is a local place where people are recognized, welcomed, and invited back.</p>
+          <p>This direction keeps ordering simple while making the brand feel more human, more local, and more worth visiting.</p>
         </div>
       </section>
 
-      <section style={communitySection}>
-        <p style={eyebrowLight}>Community proof</p>
-        <h2 style={sectionHeadingLight}>A place people can see themselves in.</h2>
-        <div style={momentGrid}>
-          {moments.map((moment) => (
-            <article key={moment} style={momentCard}>
-              <div style={photoPlaceholder}>Photo</div>
-              <strong>{moment}</strong>
+      <section className="section community">
+        <div className="section-heading">
+          <p className="eyebrow eyebrow--light">Community proof</p>
+          <h2>A place people can see themselves in.</h2>
+          <p>For a local coffee business, real photos are not decoration. They are proof that the place, people, and atmosphere are real.</p>
+        </div>
+        <div className="proof-grid">
+          <article className="proof-card proof-card--featured">
+            <div className="photo-card photo-card--large"><span>Real community photo</span></div>
+            <h3>Morning routines become familiar faces.</h3>
+            <p>Use a real customer or truck photo here to restore the authenticity the original site already had.</p>
+          </article>
+          {proof.map((item) => (
+            <article className="proof-card" key={item}>
+              <div className="photo-card photo-card--small"><span>Photo</span></div>
+              <h3>{item}</h3>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="menu" style={sectionStyle}>
-        <p style={eyebrow}>Menu highlights</p>
-        <h2 style={sectionHeading}>Favorites worth making part of your routine.</h2>
-        <div style={drinkGrid}>
+      <section id="menu" className="section menu-section">
+        <div className="section-heading section-heading--narrow">
+          <p className="eyebrow">Menu highlights</p>
+          <h2>Favorites that fit the daily ritual.</h2>
+          <p>Keep the menu easy to scan, then invite visitors to order from the full Square menu.</p>
+        </div>
+        <div className="drink-grid">
           {drinks.map((drink) => (
-            <article key={drink.name} style={drinkCard}>
-              <div style={drinkImage}>Drink</div>
-              <h3 style={cardTitle}>{drink.name}</h3>
-              <p style={cardText}>{drink.description}</p>
+            <article className="drink-card" key={drink.name}>
+              <div className="drink-card__image"><span>Drink photo</span></div>
+              <h3>{drink.name}</h3>
+              <p>{drink.description}</p>
             </article>
           ))}
         </div>
-        <a style={{ ...primaryButton, display: 'inline-block', marginTop: 34 }} href="https://alcove-community-coffee.square.site/">
-          View Full Menu
-        </a>
+        <a className="button button--primary button--standalone" href="https://alcove-community-coffee.square.site/">View Full Menu</a>
       </section>
 
-      <section style={rewardsSection}>
+      <section className="section rewards">
         <div>
-          <p style={eyebrow}>Rewards</p>
-          <h2 style={sectionHeading}>Earn stars toward your next free drink.</h2>
-          <p style={bodyLarge}>A simple loyalty program turns casual visits into repeat rituals.</p>
+          <p className="eyebrow">Rewards</p>
+          <h2>Turn repeat visits into a simple ritual.</h2>
+          <p>Earn 1 star for each visit with a qualifying purchase. 10 stars earns a free drink.</p>
         </div>
-        <div style={badge}>10 stars = free drink</div>
+        <div className="reward-badge">
+          <span>10</span>
+          <strong>stars = free drink</strong>
+        </div>
       </section>
 
-      <section id="visit" style={visitSection}>
-        <div>
-          <p style={eyebrow}>Visit Alcove</p>
-          <h2 style={sectionHeading}>Find us in Eastlake.</h2>
-          <p style={bodyLarge}>990 Lane Avenue, Chula Vista CA 91914</p>
-          <p style={bodyLarge}>Sun 8:30am–12:30pm<br />Tue/Wed/Thu 7:30am–1:00pm</p>
-          <a style={primaryButton} href="https://maps.google.com/?q=990+Lane+Avenue+Chula+Vista+CA+91914">Open Maps</a>
+      <section id="visit" className="section visit">
+        <div className="visit__copy">
+          <p className="eyebrow">Visit Alcove</p>
+          <h2>Find the truck in Eastlake.</h2>
+          <p className="address">990 Lane Avenue<br />Chula Vista, CA 91914</p>
+          <p>Sun 8:30am–12:30pm<br />Tue/Wed/Thu 7:30am–1:00pm</p>
+          <div className="button-row button-row--left">
+            <a className="button button--primary" href="https://maps.google.com/?q=990+Lane+Avenue+Chula+Vista+CA+91914">Open Maps</a>
+            <a className="button button--secondary" href="https://www.instagram.com/alcovecommunitycoffee/">Instagram</a>
+          </div>
         </div>
-        <div style={mapPanel}>Map / truck location</div>
+        <div className="location-card">
+          <span>Map or truck-location image</span>
+        </div>
       </section>
     </main>
   );
 }
 
-const page: CSSProperties = {
-  fontFamily: 'Inter, system-ui, sans-serif',
-  background: '#F8EFE4',
-  color: '#2A1A12',
-};
+const styles = `
+:root {
+  --cream: #f8efe4;
+  --cream-2: #fff7ec;
+  --espresso: #24160f;
+  --coffee: #4f3427;
+  --clay: #9b5c3c;
+  --gold: #e5c56d;
+  --muted: #74594b;
+}
 
-const hero: CSSProperties = {
-  minHeight: '88vh',
-  display: 'grid',
-  placeItems: 'center',
-  padding: '72px 24px',
-  textAlign: 'center',
-  position: 'relative',
-  overflow: 'hidden',
-  background: 'linear-gradient(135deg, #2A1A12, #6B4D3C 58%, #D5B75F)',
-  color: '#FFF7EC',
-};
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; }
+.site-shell {
+  min-height: 100vh;
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-const heroOverlay: CSSProperties = {
-  position: 'absolute',
-  inset: 0,
-  background: 'radial-gradient(circle at 25% 25%, rgba(255,247,236,.16), transparent 32%), linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.28))',
-};
+.hero {
+  min-height: 88vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 72px 24px;
+  overflow: hidden;
+  color: var(--cream-2);
+  text-align: center;
+}
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(229, 197, 109, .42), transparent 26%),
+    linear-gradient(135deg, #1c110c 0%, #553725 50%, #b97843 100%);
+  transform: scale(1.03);
+}
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border: 1px solid rgba(255, 247, 236, .24);
+  border-radius: 36px;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.38));
+}
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+}
+.hero h1 {
+  font-size: clamp(48px, 8vw, 108px);
+  line-height: .92;
+  letter-spacing: -0.06em;
+  margin: 0;
+}
+.hero__lede {
+  max-width: 690px;
+  margin: 28px auto;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.45;
+}
 
-const heroContent: CSSProperties = {
-  maxWidth: 940,
-  position: 'relative',
-  zIndex: 1,
-};
+.section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 104px 32px;
+}
+.split, .visit, .rewards {
+  display: grid;
+  grid-template-columns: minmax(280px, 440px) 1fr;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+.rewards {
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  background: var(--gold);
+  padding-inline: max(32px, calc((100vw - 1240px) / 2));
+}
+.community {
+  max-width: none;
+  background: var(--espresso);
+  color: var(--cream-2);
+  padding-inline: max(32px, calc((100vw - 1240px) / 2));
+}
+.section-heading {
+  max-width: 760px;
+}
+.section-heading--narrow { max-width: 690px; }
+.section-copy { max-width: 760px; }
+.eyebrow {
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: 12px;
+  font-weight: 850;
+  color: var(--muted);
+}
+.eyebrow--light { color: var(--cream-2); }
+h2 {
+  font-size: clamp(34px, 5vw, 66px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  margin: 0 0 24px;
+}
+h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+p {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.55;
+}
 
-const heroEyebrow: CSSProperties = {
-  letterSpacing: 4,
-  textTransform: 'uppercase',
-  fontSize: 12,
-  marginBottom: 24,
-  fontWeight: 800,
-};
+.button-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.button-row--left { justify-content: flex-start; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 850;
+  text-decoration: none;
+}
+.button--primary { background: var(--espresso); color: var(--cream-2); }
+.button--ghost { border: 2px solid var(--cream-2); color: var(--cream-2); }
+.button--secondary { border: 2px solid var(--espresso); color: var(--espresso); }
+.button--standalone { margin-top: 34px; }
 
-const heroTitle: CSSProperties = {
-  fontSize: 'clamp(48px, 8vw, 104px)',
-  lineHeight: 0.92,
-  margin: 0,
-};
+.photo-card, .location-card, .drink-card__image {
+  display: grid;
+  place-items: center;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #cda765, #6c4630);
+  color: var(--cream-2);
+  font-weight: 900;
+  text-align: center;
+  border: 1px solid rgba(36, 22, 15, .12);
+}
+.photo-card span, .location-card span, .drink-card__image span {
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(36, 22, 15, .32);
+}
+.photo-card--story { min-height: 460px; }
+.photo-card--large { min-height: 320px; margin-bottom: 22px; }
+.photo-card--small { min-height: 180px; margin-bottom: 18px; }
 
-const heroText: CSSProperties = {
-  fontSize: 24,
-  lineHeight: 1.45,
-  maxWidth: 690,
-  margin: '28px auto',
-};
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  gap: 22px;
+  margin-top: 38px;
+}
+.proof-card {
+  padding: 18px;
+  border: 1px solid rgba(255, 247, 236, .18);
+  border-radius: 30px;
+  background: rgba(255, 247, 236, .10);
+}
+.proof-card--featured {
+  grid-row: span 2;
+}
+.proof-card p { font-size: 17px; color: rgba(255, 247, 236, .82); }
 
-const buttonRow: CSSProperties = {
-  display: 'flex',
-  gap: 16,
-  justifyContent: 'center',
-  flexWrap: 'wrap',
-};
+.drink-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 36px;
+}
+.drink-card {
+  padding: 20px;
+  border: 1px solid rgba(36, 22, 15, .14);
+  border-radius: 30px;
+  background: var(--cream-2);
+}
+.drink-card__image {
+  min-height: 190px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #ead3b7, #b98154);
+}
+.drink-card p { font-size: 16px; }
 
-const splitSection: CSSProperties = {
-  ...sectionStyleBase,
-  display: 'grid',
-  gridTemplateColumns: 'minmax(260px, 420px) 1fr',
-  gap: 48,
-  alignItems: 'center',
-};
+.reward-badge {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+  background: var(--cream-2);
+  box-shadow: 0 20px 60px rgba(36, 22, 15, .12);
+}
+.reward-badge span {
+  display: block;
+  font-size: 72px;
+  line-height: .8;
+  font-weight: 950;
+  letter-spacing: -0.08em;
+}
+.reward-badge strong { max-width: 160px; }
+.address { font-weight: 800; }
+.location-card {
+  min-height: 380px;
+  background: linear-gradient(135deg, var(--coffee), var(--espresso));
+}
 
-const sectionStyle: CSSProperties = {
-  ...sectionStyleBase,
-};
-
-const sectionStyleBase: CSSProperties = {
-  padding: '104px 32px',
-  maxWidth: 1280,
-  margin: '0 auto',
-};
-
-const eyebrow: CSSProperties = {
-  textTransform: 'uppercase',
-  letterSpacing: 3,
-  fontSize: 12,
-  fontWeight: 800,
-  margin: '0 0 18px',
-};
-
-const eyebrowLight: CSSProperties = {
-  ...eyebrow,
-  color: '#F8EFE4',
-};
-
-const sectionHeading: CSSProperties = {
-  fontSize: 'clamp(36px, 5vw, 68px)',
-  lineHeight: 0.98,
-  margin: '0 0 24px',
-};
-
-const sectionHeadingLight: CSSProperties = {
-  ...sectionHeading,
-  color: '#FFF7EC',
-};
-
-const bodyLarge: CSSProperties = {
-  fontSize: 21,
-  lineHeight: 1.55,
-  maxWidth: 760,
-};
-
-const primaryButton: CSSProperties = {
-  background: '#2A1A12',
-  color: '#FFF7EC',
-  padding: '15px 24px',
-  borderRadius: 999,
-  textDecoration: 'none',
-  fontWeight: 800,
-};
-
-const secondaryButtonOnDark: CSSProperties = {
-  border: '2px solid #FFF7EC',
-  color: '#FFF7EC',
-  padding: '13px 24px',
-  borderRadius: 999,
-  textDecoration: 'none',
-  fontWeight: 800,
-};
-
-const imagePanel: CSSProperties = {
-  minHeight: 440,
-  borderRadius: 34,
-  display: 'grid',
-  placeItems: 'center',
-  background: 'linear-gradient(135deg, #D5B75F, #6B4D3C)',
-  color: '#FFF7EC',
-  fontWeight: 900,
-};
-
-const communitySection: CSSProperties = {
-  padding: '104px 32px',
-  background: '#2A1A12',
-};
-
-const momentGrid: CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-  gap: 22,
-  maxWidth: 1280,
-  margin: '36px auto 0',
-};
-
-const momentCard: CSSProperties = {
-  background: 'rgba(255, 247, 236, 0.12)',
-  border: '1px solid rgba(255, 247, 236, 0.22)',
-  borderRadius: 28,
-  padding: 18,
-  color: '#FFF7EC',
-  fontSize: 19,
-};
-
-const photoPlaceholder: CSSProperties = {
-  height: 220,
-  borderRadius: 20,
-  background: 'linear-gradient(135deg, #6B4D3C, #D5B75F)',
-  display: 'grid',
-  placeItems: 'center',
-  marginBottom: 18,
-  fontWeight: 900,
-};
-
-const drinkGrid: CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-  gap: 20,
-  marginTop: 34,
-};
-
-const drinkCard: CSSProperties = {
-  background: '#FFF7EC',
-  border: '1px solid rgba(42, 26, 18, 0.15)',
-  borderRadius: 28,
-  padding: 20,
-};
-
-const drinkImage: CSSProperties = {
-  height: 160,
-  borderRadius: 20,
-  background: '#E9D3B9',
-  display: 'grid',
-  placeItems: 'center',
-  fontWeight: 900,
-  marginBottom: 18,
-};
-
-const cardTitle: CSSProperties = {
-  fontSize: 22,
-  margin: '0 0 8px',
-};
-
-const cardText: CSSProperties = {
-  fontSize: 16,
-  lineHeight: 1.5,
-  margin: 0,
-};
-
-const rewardsSection: CSSProperties = {
-  ...sectionStyleBase,
-  display: 'grid',
-  gridTemplateColumns: '1fr minmax(220px, 320px)',
-  gap: 32,
-  alignItems: 'center',
-  background: '#E6C878',
-};
-
-const badge: CSSProperties = {
-  borderRadius: 999,
-  background: '#FFF7EC',
-  padding: '32px 28px',
-  textAlign: 'center',
-  fontWeight: 900,
-  fontSize: 24,
-};
-
-const visitSection: CSSProperties = {
-  ...sectionStyleBase,
-  display: 'grid',
-  gridTemplateColumns: '1fr minmax(260px, 440px)',
-  gap: 48,
-  alignItems: 'center',
-};
-
-const mapPanel: CSSProperties = {
-  minHeight: 360,
-  borderRadius: 34,
-  display: 'grid',
-  placeItems: 'center',
-  background: '#3A261B',
-  color: '#FFF7EC',
-  fontWeight: 900,
-};
+@media (max-width: 860px) {
+  .hero {
+    min-height: 78vh;
+    padding: 72px 20px 56px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 13vw, 62px);
+    line-height: .96;
+  }
+  .hero__lede { font-size: 18px; }
+  .section, .community, .rewards {
+    padding: 72px 20px;
+  }
+  .split, .visit, .rewards {
+    grid-template-columns: 1fr;
+  }
+  h2 {
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: 1.02;
+  }
+  p { font-size: 17px; }
+  .photo-card--story { min-height: 300px; }
+  .proof-grid, .drink-grid {
+    grid-template-columns: 1fr;
+  }
+  .proof-card--featured { grid-row: auto; }
+  .button-row, .button-row--left {
+    justify-content: stretch;
+  }
+  .button { width: 100%; }
+  .reward-badge {
+    width: min(260px, 100%);
+    justify-self: center;
+  }
+}
+`;
