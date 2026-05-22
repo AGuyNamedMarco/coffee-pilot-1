@@ -1,3 +1,18 @@
+const reasons = [
+  {
+    title: 'Community',
+    description: 'Familiar faces, real conversations, and a coffee stop people can build into their week.'
+  },
+  {
+    title: 'Craft',
+    description: 'Small-batch drinks made with care, from sweet lattes to slow-steeped cold brew.'
+  },
+  {
+    title: 'Routine',
+    description: 'A warm outdoor pause before work, errands, school drop-off, or the rest of the day.'
+  }
+];
+
 const drinks = [
   {
     name: 'Brown Sugar Latte',
@@ -13,59 +28,37 @@ const drinks = [
   }
 ];
 
-const proof = [
-  'Neighbors stopping by before the day starts',
-  'Outdoor coffee truck moments in Eastlake',
-  'Rewards, gift cards, and reasons to return'
-];
-
 export default function App() {
   return (
     <main className="site-shell">
       <style>{styles}</style>
 
       <section className="hero">
-        <div className="hero__media" aria-label="Authentic Alcove coffee truck and community photo needed" />
+        <div className="hero__media" aria-label="Warm outdoor coffee moment used as mockup imagery" />
         <div className="hero__overlay" />
         <div className="hero__content">
           <p className="eyebrow eyebrow--light">Alcove Community Coffee · Eastlake</p>
-          <h1>Coffee, neighbors, and a reason to slow down.</h1>
-          <p className="hero__lede">An outdoor coffee stop in Chula Vista built around familiar faces, small rituals, and community connection.</p>
+          <h1>Coffee worth slowing down for.</h1>
+          <p className="hero__lede">Small-batch coffee, familiar faces, and a neighborhood ritual rooted in community.</p>
           <div className="button-row">
-            <a className="button button--primary" href="#visit">Plan Your Visit</a>
-            <a className="button button--ghost" href="https://alcove-community-coffee.square.site/">Order Ahead</a>
+            <a className="button button--primary button--light" href="#visit">Find today&apos;s location</a>
+            <a className="button button--ghost" href="#menu">See menu</a>
           </div>
+          <p className="mockup-note">Concept mockup: final version should replace atmospheric imagery with client-approved photos.</p>
         </div>
       </section>
 
-      <section className="section split">
-        <div className="photo-card photo-card--story">
-          <span>Founder / truck photo</span>
+      <section className="section reasons-section">
+        <div className="section-heading section-heading--center">
+          <p className="eyebrow">Why people come</p>
+          <h2>A small coffee stop with a bigger feeling.</h2>
+          <p>Alcove is strongest when the site sells the ritual: the pause, the people, the truck, and the reason to come back.</p>
         </div>
-        <div className="section-copy">
-          <p className="eyebrow">Why Alcove exists</p>
-          <h2>Built for the kind of coffee stop people remember.</h2>
-          <p>Alcove’s opportunity is bigger than menu access. The stronger story is a local place where people are recognized, welcomed, and invited back.</p>
-          <p>This direction keeps ordering simple while making the brand feel more human, more local, and more worth visiting.</p>
-        </div>
-      </section>
-
-      <section className="section community">
-        <div className="section-heading">
-          <p className="eyebrow eyebrow--light">Community proof</p>
-          <h2>A place people can see themselves in.</h2>
-          <p>For a local coffee business, real photos are not decoration. They are proof that the place, people, and atmosphere are real.</p>
-        </div>
-        <div className="proof-grid">
-          <article className="proof-card proof-card--featured">
-            <div className="photo-card photo-card--large"><span>Real community photo</span></div>
-            <h3>Morning routines become familiar faces.</h3>
-            <p>Use a real customer or truck photo here to restore the authenticity the original site already had.</p>
-          </article>
-          {proof.map((item) => (
-            <article className="proof-card" key={item}>
-              <div className="photo-card photo-card--small"><span>Photo</span></div>
-              <h3>{item}</h3>
+        <div className="reason-grid">
+          {reasons.map((reason) => (
+            <article className="reason-card" key={reason.title}>
+              <span>{reason.title}</span>
+              <p>{reason.description}</p>
             </article>
           ))}
         </div>
@@ -73,20 +66,32 @@ export default function App() {
 
       <section id="menu" className="section menu-section">
         <div className="section-heading section-heading--narrow">
-          <p className="eyebrow">Menu highlights</p>
+          <p className="eyebrow">Featured drinks</p>
           <h2>Favorites that fit the daily ritual.</h2>
           <p>Keep the menu easy to scan, then invite visitors to order from the full Square menu.</p>
         </div>
         <div className="drink-grid">
           {drinks.map((drink) => (
             <article className="drink-card" key={drink.name}>
-              <div className="drink-card__image"><span>Drink photo</span></div>
+              <div className="drink-card__image"><span>Real drink photo</span></div>
               <h3>{drink.name}</h3>
               <p>{drink.description}</p>
             </article>
           ))}
         </div>
-        <a className="button button--primary button--standalone" href="https://alcove-community-coffee.square.site/">View Full Menu</a>
+        <a className="button button--primary button--standalone" href="https://alcove-community-coffee.square.site/">View full menu</a>
+      </section>
+
+      <section className="section split story-section">
+        <div className="photo-card photo-card--truck">
+          <span>Real Alcove truck photo</span>
+        </div>
+        <div className="section-copy">
+          <p className="eyebrow">Real Alcove</p>
+          <h2>More than a truck. A neighborhood stop.</h2>
+          <p>The strongest trust signal is simple: show the real place. A real truck image anchors the polished concept in something local, specific, and believable.</p>
+          <p>Use this section to make Alcove feel easy to find, easy to remember, and worth building into someone&apos;s regular route.</p>
+        </div>
       </section>
 
       <section className="section rewards">
@@ -104,7 +109,7 @@ export default function App() {
       <section id="visit" className="section visit">
         <div className="visit__copy">
           <p className="eyebrow">Visit Alcove</p>
-          <h2>Find the truck in Eastlake.</h2>
+          <h2>See where we&apos;re pouring today.</h2>
           <p className="address">990 Lane Avenue<br />Chula Vista, CA 91914</p>
           <p>Sun 8:30am–12:30pm<br />Tue/Wed/Thu 7:30am–1:00pm</p>
           <div className="button-row button-row--left">
@@ -113,7 +118,7 @@ export default function App() {
           </div>
         </div>
         <div className="location-card">
-          <span>Map or truck-location image</span>
+          <span>Truck-location photo or map</span>
         </div>
       </section>
     </main>
@@ -142,11 +147,11 @@ body { margin: 0; }
 }
 
 .hero {
-  min-height: 88vh;
+  min-height: 94vh;
   position: relative;
   display: grid;
   place-items: center;
-  padding: 72px 24px;
+  padding: 88px 24px;
   overflow: hidden;
   color: var(--cream-2);
   text-align: center;
@@ -155,44 +160,54 @@ body { margin: 0; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 30% 25%, rgba(229, 197, 109, .42), transparent 26%),
-    linear-gradient(135deg, #1c110c 0%, #553725 50%, #b97843 100%);
+    radial-gradient(circle at 24% 16%, rgba(229, 197, 109, .48), transparent 24%),
+    radial-gradient(circle at 74% 32%, rgba(255, 247, 236, .18), transparent 20%),
+    linear-gradient(135deg, #150d09 0%, #3d2419 42%, #9a6036 100%);
   transform: scale(1.03);
 }
 .hero__media::after {
   content: "";
   position: absolute;
-  inset: 9%;
-  border: 1px solid rgba(255, 247, 236, .24);
-  border-radius: 36px;
+  inset: 8%;
+  border: 1px solid rgba(255, 247, 236, .22);
+  border-radius: 40px;
+  background:
+    linear-gradient(135deg, rgba(255, 247, 236, .12), transparent 42%),
+    radial-gradient(circle at 48% 48%, transparent 0 32%, rgba(36, 22, 15, .22) 33% 100%);
 }
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.38));
+  background: linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.48));
 }
 .hero__content {
   position: relative;
   z-index: 1;
-  max-width: 980px;
+  max-width: 1040px;
 }
 .hero h1 {
-  font-size: clamp(48px, 8vw, 108px);
-  line-height: .92;
-  letter-spacing: -0.06em;
+  font-size: clamp(54px, 9vw, 124px);
+  line-height: .9;
+  letter-spacing: -0.07em;
   margin: 0;
 }
 .hero__lede {
-  max-width: 690px;
-  margin: 28px auto;
-  font-size: clamp(18px, 2vw, 24px);
-  line-height: 1.45;
+  max-width: 720px;
+  margin: 30px auto;
+  font-size: clamp(19px, 2.1vw, 27px);
+  line-height: 1.42;
+}
+.mockup-note {
+  margin: 22px auto 0;
+  max-width: 560px;
+  color: rgba(255, 247, 236, .70);
+  font-size: 13px;
 }
 
 .section {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 104px 32px;
+  padding: 112px 32px;
 }
 .split, .visit, .rewards {
   display: grid;
@@ -200,20 +215,20 @@ body { margin: 0; }
   gap: clamp(32px, 6vw, 72px);
   align-items: center;
 }
+.reasons-section { padding-top: 118px; }
 .rewards {
   max-width: none;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
   background: var(--gold);
   padding-inline: max(32px, calc((100vw - 1240px) / 2));
 }
-.community {
-  max-width: none;
-  background: var(--espresso);
-  color: var(--cream-2);
-  padding-inline: max(32px, calc((100vw - 1240px) / 2));
-}
+.story-section { padding-top: 118px; }
 .section-heading {
   max-width: 760px;
+}
+.section-heading--center {
+  text-align: center;
+  margin: 0 auto;
 }
 .section-heading--narrow { max-width: 690px; }
 .section-copy { max-width: 760px; }
@@ -227,9 +242,9 @@ body { margin: 0; }
 }
 .eyebrow--light { color: var(--cream-2); }
 h2 {
-  font-size: clamp(34px, 5vw, 66px);
-  line-height: 1;
-  letter-spacing: -0.055em;
+  font-size: clamp(36px, 5.3vw, 72px);
+  line-height: .96;
+  letter-spacing: -0.06em;
   margin: 0 0 24px;
 }
 h3 {
@@ -254,21 +269,46 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 50px;
   border-radius: 999px;
-  padding: 14px 22px;
+  padding: 15px 24px;
   font-weight: 850;
   text-decoration: none;
 }
 .button--primary { background: var(--espresso); color: var(--cream-2); }
+.button--light { background: var(--cream-2); color: var(--espresso); }
 .button--ghost { border: 2px solid var(--cream-2); color: var(--cream-2); }
 .button--secondary { border: 2px solid var(--espresso); color: var(--espresso); }
-.button--standalone { margin-top: 34px; }
+.button--standalone { margin-top: 36px; }
+
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 42px;
+}
+.reason-card {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px;
+  border-radius: 34px;
+  background: var(--cream-2);
+  border: 1px solid rgba(36, 22, 15, .12);
+  box-shadow: 0 18px 50px rgba(36, 22, 15, .08);
+}
+.reason-card span {
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 950;
+  letter-spacing: -0.06em;
+}
+.reason-card p { margin-bottom: 0; color: var(--muted); }
 
 .photo-card, .location-card, .drink-card__image {
   display: grid;
   place-items: center;
-  border-radius: 32px;
+  border-radius: 34px;
   background: linear-gradient(135deg, #cda765, #6c4630);
   color: var(--cream-2);
   font-weight: 900;
@@ -280,32 +320,18 @@ p {
   border-radius: 999px;
   background: rgba(36, 22, 15, .32);
 }
-.photo-card--story { min-height: 460px; }
-.photo-card--large { min-height: 320px; margin-bottom: 22px; }
-.photo-card--small { min-height: 180px; margin-bottom: 18px; }
-
-.proof-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
-  gap: 22px;
-  margin-top: 38px;
+.photo-card--truck {
+  min-height: 500px;
+  background:
+    linear-gradient(rgba(36,22,15,.06), rgba(36,22,15,.32)),
+    linear-gradient(135deg, #d5aa67 0%, #7f5034 58%, #2b1a12 100%);
 }
-.proof-card {
-  padding: 18px;
-  border: 1px solid rgba(255, 247, 236, .18);
-  border-radius: 30px;
-  background: rgba(255, 247, 236, .10);
-}
-.proof-card--featured {
-  grid-row: span 2;
-}
-.proof-card p { font-size: 17px; color: rgba(255, 247, 236, .82); }
 
 .drink-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  margin-top: 36px;
+  margin-top: 38px;
 }
 .drink-card {
   padding: 20px;
@@ -314,7 +340,7 @@ p {
   background: var(--cream-2);
 }
 .drink-card__image {
-  min-height: 190px;
+  min-height: 210px;
   margin-bottom: 20px;
   background: linear-gradient(135deg, #ead3b7, #b98154);
 }
@@ -340,36 +366,36 @@ p {
 .reward-badge strong { max-width: 160px; }
 .address { font-weight: 800; }
 .location-card {
-  min-height: 380px;
+  min-height: 400px;
   background: linear-gradient(135deg, var(--coffee), var(--espresso));
 }
 
 @media (max-width: 860px) {
   .hero {
-    min-height: 78vh;
-    padding: 72px 20px 56px;
+    min-height: 84vh;
+    padding: 76px 20px 60px;
   }
   .hero h1 {
-    font-size: clamp(42px, 13vw, 62px);
-    line-height: .96;
+    font-size: clamp(46px, 14vw, 68px);
+    line-height: .94;
   }
   .hero__lede { font-size: 18px; }
-  .section, .community, .rewards {
-    padding: 72px 20px;
+  .section, .rewards {
+    padding: 76px 20px;
   }
   .split, .visit, .rewards {
     grid-template-columns: 1fr;
   }
   h2 {
-    font-size: clamp(34px, 10vw, 48px);
-    line-height: 1.02;
+    font-size: clamp(36px, 10.5vw, 52px);
+    line-height: 1;
   }
   p { font-size: 17px; }
-  .photo-card--story { min-height: 300px; }
-  .proof-grid, .drink-grid {
+  .reason-grid, .drink-grid {
     grid-template-columns: 1fr;
   }
-  .proof-card--featured { grid-row: auto; }
+  .reason-card { min-height: 220px; }
+  .photo-card--truck { min-height: 320px; }
   .button-row, .button-row--left {
     justify-content: stretch;
   }
