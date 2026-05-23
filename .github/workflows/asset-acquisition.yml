@@ -1,0 +1,24 @@
+name: Asset Acquisition Agent
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  acquire:
+    if: contains(github.event.issue.labels.*.name, 'asset-acquisition')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npx tsx tools/asset-acquisition/acquire-assets.ts https://alcove-community-coffee.square.site/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: acquired-assets
+          path: |
+            public/assets/
+            asset-manifest.json
