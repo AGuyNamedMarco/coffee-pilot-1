@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "typescript": "latest",
+    "cheerio": "^1.2.0",
+    "playwright": "^1.60.0",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
